@@ -1,7 +1,8 @@
 import { AllCommunityModule, ICellRendererParams, ModuleRegistry, themeQuartz } from 'ag-grid-community';
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { AgGridReact } from 'ag-grid-react';
-import { ColDef } from "ag-grid-community";
+import { ColDef, GridApi } from "ag-grid-community";
+import searchIcon from '../images/icons/search-icon.png';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -30,6 +31,16 @@ export default function EmployeeTable() {
     { name: "Isaac Anderson", riskScore: 7, riskLevel: 'Medium', frequency: 2 },
     { name: "Jack Thomas", riskScore: 6, riskLevel: 'Medium', frequency: 4 },
   ]);
+
+  const [searchText, setSearchText] = useState("");
+  const gridApi = useRef<GridApi | null>(null);
+
+  const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(event.target.value);
+    if (gridApi.current) {
+      (gridApi.current as any).setQuickFilter(event.target.value);
+    }
+  };
 
   const customNameColumn: React.FC<ICellRendererParams<{ make: string }>> = (params) => {
     const firstLetters = params.value
@@ -65,15 +76,25 @@ export default function EmployeeTable() {
   };
 
   const [columnDefs] = useState<ColDef<EmployeeData>[]>([
-    { field: "name", headerName: "NAME", cellRenderer: customNameColumn, sortable: true, filter: false },
+    { field: "name", headerName: "NAME", cellRenderer: customNameColumn, sortable: true, filter: false, },
     { field: "riskScore", headerName: "RISK SCORE", cellRenderer: customRiskScoreColumn, sortable: true, filter: false },
     { field: "riskLevel", headerName: "RISK LEVEL", cellRenderer: customRiskLevelColumn, sortable: false, filter: false },
-    { field: "frequency", headerName: "FREQUENCY", sortable: false, filter: false },
+    { field: "frequency", headerName: "FREQUENCY", sortable: false, filter: false, },
 
   ]);
   return (
-    <div className="employee-data-table" style={{ height: 500, width: '100%', backgroundColor: '#2e2e2e' }}>
-      <AgGridReact theme={myTheme} rowData={rowData} columnDefs={columnDefs} />
+    <div className='data-table-wrapper'>
+      <div className='emp-search-bar'>
+        <input
+          type="text"
+          placeholder="Type in an Employee's Name"
+          // value={searchText}
+        />
+        <button className='btn'><img src={searchIcon} height={25} width={25} alt={'search icon'}/></button>
+      </div>
+      <div className="employee-data-table custom-style" style={{ height: 500, width: "100%" }}>
+        <AgGridReact theme={myTheme} rowData={rowData} columnDefs={columnDefs} domLayout="autoHeight" defaultColDef={{ resizable: true }} onGridReady={(params) => (gridApi.current = params.api)} />
+      </div>
     </div>
   );
 }
