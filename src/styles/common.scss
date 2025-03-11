@@ -1,0 +1,51 @@
+$color1: #FFFFFF;
+$color2: #1A1A19;
+$color3: #0D0D0B;
+$color4: #FEE442;
+$color5: #F59A31;
+$color6: #EF3C1E;
+$color7: #00FF81;
+$color8: #949494;
+$color9: #4F4F4A;
+
+.body-wrapper{
+    background-color: $color3;
+}
+.employee-data-table{
+    background-color: $color2;
+    .emp-name-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        .dp-wrapper{
+            background-color: $color9;
+            height: 20px;
+            width: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            padding: 5px 5px;
+            color: $color1;
+        }
+        .emp-name{
+            padding: 0px 10px;
+            color: $color1;
+        }
+    }
+    .score-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        .score-indicator{
+            background-color: green;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+        }
+        .score-text{
+            padding: 0px 10px;
+            color: $color1;
+        }
+    }
+}
