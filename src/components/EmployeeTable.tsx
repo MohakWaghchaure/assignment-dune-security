@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from "ag-grid-community";
 import searchIcon from '../images/icons/search-icon.png';
-import arrowIcon from '../images/icons/arrow-icon.png';
-import doubleArrowIcon from '../images/icons/double-arrow-icon.png';
 import { EmployeeData, rowData } from "./employees";
+import CustomPagination from './CustomPagination';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -102,60 +101,10 @@ export default function EmployeeTable() {
   ]);
 
   const [gridApi, setGridApi] = useState<any>(null);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const goToPage = (page: number) => {
-    if (gridApi) {
-      gridApi.paginationGoToPage(page - 1); // Ag-Grid is 0-indexed
-      setCurrentPage(page);
-    }
-  };
-
-  const onNextPage = () => {
-    if (currentPage < totalPages) {
-      goToPage(currentPage + 1);
-    }
-  };
-
-  const onPrevPage = () => {
-    if (currentPage > 1) {
-      goToPage(currentPage - 1);
-    }
-  };
-
-  const renderPaginationButtons = () => {
-    let pages = [];
-
-    // Always show first 4 pages
-    for (let i = 1; i <= Math.min(4, totalPages); i++) {
-      pages.push(
-        <button
-          key={i}
-          className={`pagination-btn ${currentPage === i ? "active" : ""}`}
-          onClick={() => goToPage(i)}
-        >{i}</button>
-      );
-    }
-
-    // Add "..." if there are more pages
-    if (totalPages > 5) {
-      pages.push(<div key="dots" className='dots'>...</div>);
-
-      // Add the last page button
-      pages.push(
-        <button
-          key={totalPages}
-          className={`pagination-btn ${currentPage === totalPages ? "active" : ""}`}
-          onClick={() => goToPage(totalPages)}
-        >
-          {totalPages}
-        </button>
-      );
-    }
-
-    return pages;
-  };
+  
+  
   return (
     <div className='data-table-wrapper'>
       <div className='tab-head'>
@@ -192,15 +141,8 @@ export default function EmployeeTable() {
             }}
           />
         </div>
-        <div className="pagination-wrapper">
-          <div className='pagination-container'>
-            <button className='pagination-btn doublePrev'><img src={doubleArrowIcon} height={20} width={20} alt={'Previous'} /></button>
-            <button className='pagination-btn prev' onClick={onPrevPage} disabled={currentPage === 1}><img src={arrowIcon} height={20} width={20} alt={'Previous'} /></button>
-            {renderPaginationButtons()}
-            <button className='pagination-btn next' onClick={onNextPage} disabled={currentPage === totalPages}><img src={arrowIcon} height={20} width={20} alt={'Next'} /></button>
-            <button className='pagination-btn doubleNext'><img src={doubleArrowIcon} height={20} width={20} alt={'Next'} /></button>
-          </div>
-        </div>
+        <CustomPagination totalPages={totalPages} gridApi={gridApi}></CustomPagination>
+        
       </div>
     </div>
 
