@@ -6,6 +6,9 @@ export default function FlowDiagram() {
       <div className='title'>User Interaction</div>
       <div className='interactions'>10,483</div>
       <div className='sub-text'>TOTAL INTERACTIONS</div>
+      <div className=''>
+        
+      </div>
     </div>
   );
 }
