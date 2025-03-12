@@ -3,15 +3,11 @@ import React, { useState } from "react";
 import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from "ag-grid-community";
 import searchIcon from '../images/icons/search-icon.png';
+import arrowIcon from '../images/icons/arrow-icon.png';
+import doubleArrowIcon from '../images/icons/double-arrow-icon.png';
+import { EmployeeData, rowData } from "./employees";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
-
-interface EmployeeData {
-  name: string;
-  riskScore: number;
-  riskLevel: string;
-  frequency: number;
-}
 
 const myTheme = themeQuartz.withParams({
   backgroundColor: '#1A1A19',
@@ -19,18 +15,6 @@ const myTheme = themeQuartz.withParams({
 });
 
 export default function EmployeeTable() {
-  const [rowData] = useState<EmployeeData[]>([
-    { name: "Alice Smith", riskScore: 80, riskLevel: 'Low', frequency: 2 },
-    { name: "Bob Johnson", riskScore: 50, riskLevel: 'High', frequency: 3 },
-    { name: "Charlie Brown", riskScore: 60, riskLevel: 'Medium', frequency: 1 },
-    { name: "David Williams", riskScore: 70, riskLevel: 'Medium', frequency: 4 },
-    { name: "Eve Davis", riskScore: 90, riskLevel: 'High', frequency: 5 },
-    { name: "Frank Miller", riskScore: 30, riskLevel: 'Low', frequency: 2 },
-    { name: "Grace Lee", riskScore: 80, riskLevel: 'Low', frequency: 3 },
-    { name: "Hannah Taylor", riskScore: 40, riskLevel: 'High', frequency: 1 },
-    { name: "Isaac Anderson", riskScore: 70, riskLevel: 'Medium', frequency: 2 },
-    { name: "Jack Thomas", riskScore: 60, riskLevel: 'Medium', frequency: 4 },
-  ]);
 
   const [inputValue, setInputValue] = useState<string>('');
   const [currentInputValue, setCurrentInputValue] = useState<string>('');
@@ -74,7 +58,7 @@ export default function EmployeeTable() {
     } else if (params.value > 40) {
       riskScore = 'medium';
     }
-    else{
+    else {
       riskScore = 'low';
     }
     return (
@@ -92,9 +76,9 @@ export default function EmployeeTable() {
       Severe: 'severe',
       Low: 'low',
     };
-  
+
     const riskLevel = riskLevelMap[params.value] || 'low';
-  
+
     return (
       <div className="score-wrapper">
         <div className={`score-indicator ${riskLevel}`}></div>
@@ -116,6 +100,62 @@ export default function EmployeeTable() {
     { field: "frequency", headerName: "FREQUENCY", cellRenderer: customFrequencyColumn, sortable: false, filter: false, },
 
   ]);
+
+  const [gridApi, setGridApi] = useState<any>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  const goToPage = (page: number) => {
+    if (gridApi) {
+      gridApi.paginationGoToPage(page - 1); // Ag-Grid is 0-indexed
+      setCurrentPage(page);
+    }
+  };
+
+  const onNextPage = () => {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
+  };
+
+  const onPrevPage = () => {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
+  };
+
+  const renderPaginationButtons = () => {
+    let pages = [];
+
+    // Always show first 4 pages
+    for (let i = 1; i <= Math.min(4, totalPages); i++) {
+      pages.push(
+        <button
+          key={i}
+          className={`pagination-btn ${currentPage === i ? "active" : ""}`}
+          onClick={() => goToPage(i)}
+        >{i}</button>
+      );
+    }
+
+    // Add "..." if there are more pages
+    if (totalPages > 5) {
+      pages.push(<div key="dots" className='dots'>...</div>);
+
+      // Add the last page button
+      pages.push(
+        <button
+          key={totalPages}
+          className={`pagination-btn ${currentPage === totalPages ? "active" : ""}`}
+          onClick={() => goToPage(totalPages)}
+        >
+          {totalPages}
+        </button>
+      );
+    }
+
+    return pages;
+  };
   return (
     <div className='data-table-wrapper'>
       <div className='tab-head'>
@@ -132,18 +172,37 @@ export default function EmployeeTable() {
           />
           <button className='btn' onClick={onSearchHandler}><img src={searchIcon} height={25} width={25} alt={'search icon'} /></button>
         </div>
-        <div className="employee-data-table custom-style" style={{ height: 500, width: "100%" }}>
-        <AgGridReact
+        <div className="employee-data-table custom-style" >
+          <AgGridReact
+            className="ag-theme-alpine full-width-grid"
             theme={myTheme}
             rowData={rowData}
             columnDefs={columnDefs}
             domLayout="autoHeight"
-            defaultColDef={{ resizable: true }}
+            defaultColDef={{ resizable: true, flex: 1, }}
             quickFilterText={currentInputValue}
+            pagination={true}
+            paginationPageSize={5}
+            suppressPaginationPanel={true}
+            autoSizeStrategy={{ type: 'fitGridWidth' }} // Auto-size column width
+            onGridReady={(params) => {
+              params.api.sizeColumnsToFit();
+              setGridApi(params.api);
+              setTotalPages(params.api.paginationGetTotalPages());
+            }}
           />
+        </div>
+        <div className="pagination-wrapper">
+          <div className='pagination-container'>
+            <button className='pagination-btn doublePrev'><img src={doubleArrowIcon} height={20} width={20} alt={'Previous'} /></button>
+            <button className='pagination-btn prev' onClick={onPrevPage} disabled={currentPage === 1}><img src={arrowIcon} height={20} width={20} alt={'Previous'} /></button>
+            {renderPaginationButtons()}
+            <button className='pagination-btn next' onClick={onNextPage} disabled={currentPage === totalPages}><img src={arrowIcon} height={20} width={20} alt={'Next'} /></button>
+            <button className='pagination-btn doubleNext'><img src={doubleArrowIcon} height={20} width={20} alt={'Next'} /></button>
+          </div>
         </div>
       </div>
     </div>
-    
+
   );
 }
