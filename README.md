@@ -1,6 +1,6 @@
 # Dune Security Frontend Engineering Assignment
 
-This project outlines the technologies, libraries, and languages used in the **Dune Security Frontend Engineering Assignment**. The project is live at [Dune Security](https://assignment-dune-security.vercel.app/).
+This project outlines the technologies, libraries, and languages used in the **Dune Security Frontend Engineering Assignment**. The project is live at [https://assignment-dune-security.vercel.app/](https://assignment-dune-security.vercel.app/).
 
 ## Technologies and Libraries Used
 
