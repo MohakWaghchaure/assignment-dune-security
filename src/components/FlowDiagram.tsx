@@ -1,4 +1,5 @@
 import * as React from 'react';
+import FlowChart from './FlowChart';
 import CustomChart from './CustomChart';
 
 export default function FlowDiagram() {
@@ -8,6 +9,7 @@ export default function FlowDiagram() {
       <div className='interactions'>10,483</div>
       <div className='sub-text'>TOTAL INTERACTIONS</div>
       <div className=''>
+        {/* <FlowChart></FlowChart> */}
         <CustomChart></CustomChart>
       </div>
     </div>
