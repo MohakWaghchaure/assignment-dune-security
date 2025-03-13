@@ -1,5 +1,4 @@
 import * as React from 'react';
-import FlowChart from './FlowChart';
 import CustomChart from './CustomChart';
 
 export default function FlowDiagram() {

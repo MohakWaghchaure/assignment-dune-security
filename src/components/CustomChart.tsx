@@ -3,14 +3,14 @@ import { BaseEdge, EdgeProps, getBezierPath, Handle, Position, ReactFlow } from 
 import '@xyflow/react/dist/style.css';
 
 const initialEdges = [
-  { id: '1-2', source: 'node-1', target: 'node-2', },
-  { id: '1-3', source: 'node-1', target: 'node-3', },
-  { id: '1-4', source: 'node-1', target: 'node-4', },
-  { id: '1-5', source: 'node-1', target: 'node-5', },
-  { id: '1-6', source: 'node-1', target: 'node-6', },
-  { id: '1-7', source: 'node-1', target: 'node-7', },
-  { id: '1-8', source: 'node-1', target: 'node-8', },
-  { id: '1-9', source: 'node-1', target: 'node-9', },
+  { id: '1-2', source: 'node-1', target: 'node-2', sourceHandle: 'a'},
+  { id: '1-3', source: 'node-1', target: 'node-3', sourceHandle: 'b'},
+  { id: '1-4', source: 'node-1', target: 'node-4', sourceHandle: 'c'},
+  { id: '1-5', source: 'node-1', target: 'node-5', sourceHandle: 'd'},
+  { id: '1-6', source: 'node-1', target: 'node-6', sourceHandle: 'e'},
+  { id: '1-7', source: 'node-1', target: 'node-7', sourceHandle: 'f'},
+  { id: '1-8', source: 'node-1', target: 'node-8', sourceHandle: 'g'},
+  { id: '1-9', source: 'node-1', target: 'node-9', sourceHandle: 'h'},
   { id: '2-10', source: 'node-2', target: 'node-10', },
   { id: '3-10', source: 'node-3', target: 'node-10', },
   { id: '4-10', source: 'node-4', target: 'node-10', },
@@ -37,12 +37,15 @@ const initialNodes = [
 const CustomNode = ({ data }: { data: { label: string, count: number } }) => {
   return (
     <div className='custom-node-wrapper'>
-    <Handle type="target" position={Position.Left} id="a" />
-      <div className="custom-node">
-        <div className="count">{data.count}</div>
-        <div className="label">{data.label}</div>
+    <Handle type="target" position={Position.Left} id="i" style={{background: 'transparent', border: 'none'}}/>
+      <div className='custom-node'>
+        <div className='node-start'></div>
+        <div className="custom-node">
+          <div className="count">{data.count}</div>
+          <div className="label">{data.label}</div>
+        </div>
       </div>
-    <Handle type="source" position={Position.Right} id="b" />
+    <Handle type="source" position={Position.Right} id="j" style={{background: 'transparent', border: 'none'}}/>
   </div>
   )
 };
@@ -50,7 +53,14 @@ const CustomNode = ({ data }: { data: { label: string, count: number } }) => {
 const StartingNode = () => {
   return (
     <div className='starting-node-wrapper'>
-      <Handle type="source" position={Position.Right} id='a'/>
+      <Handle type="source" position={Position.Right} id='a' style={{top: 20, background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='b'style={{top: 40, background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='c'style={{top: 60, background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='d'style={{top: 80, background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='e'style={{top: 100, background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='f'style={{top: 120, background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='g'style={{top: 140, background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='h'style={{top: 160, background: 'transparent', border: 'none'}} />
       <div className='starting-node'></div>
     </div>
   );
@@ -71,7 +81,7 @@ const CustomNEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targe
     <BaseEdge
       id={id}
       path={edgePath}
-      style={{ stroke: '#4F4F4A', strokeWidth: 10, strokeLinecap: 'square', strokeOpacity: 0.8 }}
+      style={{ stroke: '#000000', strokeWidth: 5, strokeLinecap: 'square', strokeOpacity: 0.9 }}
     />
   );
 };
@@ -87,7 +97,6 @@ export default function CustomChart() {
         edges={initialEdges}
         edgeTypes={edgeTypes}
         nodeTypes={nodeTypes}
-      
       />
     </div>
   );

@@ -229,31 +229,33 @@ $color9: #4F4F4A;
         }
     }
     .custom-node-wrapper{
-        display: flex;
-        align-items: center;
-        .node-start{
-            background-color: $color8;
-            padding: 0.8rem 0.25rem;
-            border-radius: 10px;
-            margin-right: 0.5rem;
-        }
-        .custom-node {
+        .custom-node{
             display: flex;
-            background-color: $color8;
-            padding: 0.4rem 0.4rem;
-            border-radius: 10px;
-            min-width: 14rem;
-            .count{
-                font-size: 1rem;
-                font-weight: 700;
-                padding: 0rem 0.2rem;
-                color: $color3;
+            align-items: center;
+            .node-start{
+                background-color: $color8;
+                padding: 0.8rem 0.25rem;
+                border-radius: 10px;
+                margin-right: 0.5rem;
             }
-            .label{
-                font-size: 1rem;
-                font-weight: 400;
-                padding: 0rem 0.2rem;
-                color: $color3;
+            .custom-node {
+                display: flex;
+                background-color: $color8;
+                padding: 0.4rem 0.4rem;
+                border-radius: 10px;
+                min-width: 14rem;
+                .count{
+                    font-size: 1rem;
+                    font-weight: 700;
+                    padding: 0rem 0.2rem;
+                    color: $color3;
+                }
+                .label{
+                    font-size: 1rem;
+                    font-weight: 400;
+                    padding: 0rem 0.2rem;
+                    color: $color3;
+                }
             }
         }
     } 
