@@ -4,13 +4,13 @@ import '@xyflow/react/dist/style.css';
 
 const initialEdges = [
   { id: '1-2', source: 'node-1', target: 'node-2', sourceHandle: 'a', type: 'customEdge'},
-  { id: '1-3', source: 'node-1', target: 'node-3', sourceHandle: 'b',type: 'customEdge'},
-  { id: '1-4', source: 'node-1', target: 'node-4', sourceHandle: 'c',type: 'customEdge'},
-  { id: '1-5', source: 'node-1', target: 'node-5', sourceHandle: 'd',type: 'customEdge'},
-  { id: '1-6', source: 'node-1', target: 'node-6', sourceHandle: 'e',type: 'customEdge'},
-  { id: '1-7', source: 'node-1', target: 'node-7', sourceHandle: 'f',type: 'customEdge'},
-  { id: '1-8', source: 'node-1', target: 'node-8', sourceHandle: 'g',type: 'customEdge'},
-  { id: '1-9', source: 'node-1', target: 'node-9', sourceHandle: 'h',type: 'customEdge'},
+  { id: '1-3', source: 'node-1', target: 'node-3', sourceHandle: 'b', type: 'customEdge'},
+  { id: '1-4', source: 'node-1', target: 'node-4', sourceHandle: 'c', type: 'customEdge'},
+  { id: '1-5', source: 'node-1', target: 'node-5', sourceHandle: 'd', type: 'customEdge'},
+  { id: '1-6', source: 'node-1', target: 'node-6', sourceHandle: 'e', type: 'customEdge'},
+  { id: '1-7', source: 'node-1', target: 'node-7', sourceHandle: 'f', type: 'customEdge'},
+  { id: '1-8', source: 'node-1', target: 'node-8', sourceHandle: 'g', type: 'customEdge'},
+  { id: '1-9', source: 'node-1', target: 'node-9', sourceHandle: 'h', type: 'customEdge'},
   { id: '2-10', source: 'node-2', target: 'node-10', type: 'customEdge'},
   { id: '3-10', source: 'node-3', target: 'node-10', type: 'customEdge'},
   { id: '4-10', source: 'node-4', target: 'node-10', type: 'customEdge'},
@@ -20,27 +20,27 @@ const initialEdges = [
 ];
 
 const initialNodes = [
-  { id: 'node-1', data: { label: '', count: 0 }, position: { x: -100, y: 50 }, type: 'startingNode', sourcePosition: Position.Right },
-  { id: 'node-2', data: { label: 'CLICKED LINKS', count: 100 }, position: { x: 150, y: 0 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-3', data: { label: 'SCANNED QR CODES', count: 100 }, position: { x: 150, y: 50 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-4', data: { label: 'HYBRID TESTS', count: 100 }, position: { x: 150, y: 100 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-5', data: { label: 'SMS LINK CLICKED', count: 100 }, position: { x: 150, y: 150 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-6', data: { label: 'DOWNLOADED ATTACHMENTS', count: 100 }, position: { x: 150, y: 200 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-7', data: { label: 'RESPONDED TO PHISHING', count: 100 }, position: { x: 150, y: 250 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-8', data: { label: 'IGNORED PHISHING', count: 100 }, position: { x: 150, y: 300 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-9', data: { label: 'REPORTED TO WATCHTOWER', count: 100 }, position: { x: 150, y: 350 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-10', data: { label: 'ENTERED CREDENTIALS', count: 100 }, position: { x: 600, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-11', data: { label: 'SUBMITED CREDENTIALS', count: 100 }, position: { x: 1000, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-12', data: { label: 'ENTERED MFA', count: 100 }, position: { x: 1400, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-1', data: { backgroundColor: '#FFFFFF', label: '', count: 0 }, position: { x: -100, y: 50 }, type: 'startingNode', sourcePosition: Position.Right },
+  { id: 'node-2', data: { backgroundColor: '', label: 'CLICKED LINKS', count: 2735 }, position: { x: 150, y: 0 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-3', data: { backgroundColor: '', label: 'SCANNED QR CODES', count: 19 }, position: { x: 150, y: 50 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-4', data: { backgroundColor: '', label: 'HYBRID TESTS', count: 0 }, position: { x: 150, y: 100 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-5', data: { backgroundColor: '', label: 'SMS LINK CLICKED', count: 0 }, position: { x: 150, y: 150 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-6', data: { backgroundColor: '', label: 'DOWNLOADED ATTACHMENTS', count: 9 }, position: { x: 150, y: 200 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-7', data: { backgroundColor: '', label: 'RESPONDED TO PHISHING', count: 105 }, position: { x: 150, y: 250 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-8', data: { backgroundColor: '#FFFFFF', label: 'IGNORED PHISHING', count: 5577 }, position: { x: 150, y: 300 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-9', data: { backgroundColor: '#00FF81', label: 'REPORTED TO WATCHTOWER', count: 2021 }, position: { x: 150, y: 350 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-10', data: { backgroundColor: '#FEE442', label: 'ENTERED CREDENTIALS', count: 302 }, position: { x: 600, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-11', data: { backgroundColor: '#F59A31', label: 'SUBMITED CREDENTIALS', count: 44 }, position: { x: 1000, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-12', data: { backgroundColor: '#EF3C1E', label: 'ENTERED MFA', count: 26 }, position: { x: 1400, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
 ];
 
-const CustomNode = ({ data }: { data: { label: string, count: number } }) => {
+const CustomNode = ({ data }: { data: { label: string, count: number, backgroundColor: string } }) => {
   return (
     <div className='custom-node-wrapper'>
     <Handle type="target" position={Position.Left} id="i" style={{background: 'transparent', border: 'none'}}/>
       <div className='custom-node'>
-        <div className='node-start'></div>
-        <div className="custom-node">
+        <div className='node-start' style={{backgroundColor: data.backgroundColor}}></div>
+        <div className="custom-node" style={{backgroundColor: data.backgroundColor}}>
           <div className="count">{data.count}</div>
           <div className="label">{data.label}</div>
         </div>
@@ -50,7 +50,7 @@ const CustomNode = ({ data }: { data: { label: string, count: number } }) => {
   )
 };
 
-const StartingNode = () => {
+const StartingNode = ({ data }: { data: { backgroundColor: string } }) => {
   return (
     <div className='starting-node-wrapper'>
       <Handle type="source" position={Position.Right} id='a' style={{top: '11%', background: 'transparent', border: 'none'}} />
@@ -61,12 +61,12 @@ const StartingNode = () => {
       <Handle type="source" position={Position.Right} id='f'style={{top: '66%', background: 'transparent', border: 'none'}} />
       <Handle type="source" position={Position.Right} id='g'style={{top: '77%', background: 'transparent', border: 'none'}} />
       <Handle type="source" position={Position.Right} id='h'style={{top: '88%', background: 'transparent', border: 'none'}} />
-      <div className='starting-node'></div>
+      <div className='starting-node' style={{backgroundColor: data.backgroundColor}}></div>
     </div>
   );
 };
 
-const CustomNEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targetY }) => {
+const CustomEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targetY }) => {
   const [edgePath] = getBezierPath({
     sourceX: sourceX + 5,
     sourceY,
@@ -86,8 +86,46 @@ const CustomNEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targe
   );
 };
 
+const CustomEdgeThick: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targetY }) => {
+  const [edgePath] = getBezierPath({
+    sourceX: sourceX + 5,
+    sourceY,
+    targetX: targetX - 5,
+    targetY,
+    sourcePosition: Position.Right,
+    targetPosition: Position.Left,
+    curvature: 0.5,
+  });
+
+  return (
+    <>
+      {/* Gradient Definition */}
+      <svg width="0" height="0">
+        <defs>
+          <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: '#ff7e5f', stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: '#feb47b', stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      {/* BaseEdge with gradient */}
+      <BaseEdge
+        id={id}
+        path={edgePath}
+        style={{
+          stroke: 'url(#gradient1)', // Apply the gradient
+          strokeWidth: 10,
+          strokeLinecap: 'square',
+          strokeOpacity: 0.5,
+        }}
+      />
+    </>
+  );
+};
+
 const nodeTypes = { custom: CustomNode, startingNode: StartingNode };
-const edgeTypes = { customEdge: CustomNEdge };
+const edgeTypes = { customEdge: CustomEdge, CustomEdgeThick: CustomEdgeThick };
 
 export default function CustomChart() {
   return (
