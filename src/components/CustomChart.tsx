@@ -20,7 +20,7 @@ const initialEdges = [
 ];
 
 const initialNodes = [
-  { id: 'node-1', data: { backgroundColor: '#FFFFFF', label: '', count: 0 }, position: { x: 0, y: 70 }, type: 'startingNode', sourcePosition: Position.Right },
+  { id: 'node-1', data: { backgroundColor: '#FFFFFF', label: '', count: 0 }, position: { x: 10, y: 70 }, type: 'startingNode', sourcePosition: Position.Right },
   { id: 'node-2', data: { backgroundColor: '', label: 'CLICKED LINKS', count: 2735 }, position: { x: 200, y: 0 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
   { id: 'node-3', data: { backgroundColor: '', label: 'SCANNED QR CODES', count: 19 }, position: { x: 200, y: 50 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
   { id: 'node-4', data: { backgroundColor: '', label: 'HYBRID TESTS', count: 0 }, position: { x: 200, y: 100 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
@@ -29,9 +29,9 @@ const initialNodes = [
   { id: 'node-7', data: { backgroundColor: '', label: 'RESPONDED TO PHISHING', count: 105 }, position: { x: 200, y: 280 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
   { id: 'node-8', data: { backgroundColor: '#FFFFFF', label: 'IGNORED PHISHING', count: 5577 }, position: { x: 200, y: 360 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
   { id: 'node-9', data: { backgroundColor: '#00FF81', label: 'REPORTED TO WATCHTOWER', count: 2021 }, position: { x: 200, y: 410 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-10', data: { backgroundColor: '#FEE442', label: 'ENTERED CREDENTIALS', count: 302 }, position: { x: 600, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-11', data: { backgroundColor: '#F59A31', label: 'SUBMITED CREDENTIALS', count: 44 }, position: { x: 950, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-12', data: { backgroundColor: '#EF3C1E', label: 'ENTERED MFA', count: 26 }, position: { x: 1300, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-10', data: { backgroundColor: '#FEE442', label: 'ENTERED CREDENTIALS', count: 302 }, position: { x: 550, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-11', data: { backgroundColor: '#F59A31', label: 'SUBMITED CREDENTIALS', count: 44 }, position: { x: 870, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-12', data: { backgroundColor: '#EF3C1E', label: 'ENTERED MFA', count: 26 }, position: { x: 1180, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
 ];
 
 const CustomNode = ({ data }: { data: { label: string, count: number, backgroundColor: string } }) => {
@@ -67,6 +67,10 @@ const StartingNode = ({ data }: { data: { backgroundColor: string } }) => {
 };
 
 const CustomEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targetY }) => {
+  let strokeColor;
+  if(id === '1-9'){
+    strokeColor = '#00FF81';
+  }
   const [edgePath] = getBezierPath({
     sourceX: sourceX + 8,
     sourceY,
@@ -81,12 +85,20 @@ const CustomEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, target
     <BaseEdge
       id={id}
       path={edgePath}
-      style={{ stroke: '#949494', strokeWidth: 12, strokeLinecap: 'square', strokeOpacity: 0.4 }}
+      style={{ stroke: strokeColor, strokeWidth: 12, strokeLinecap: 'square', strokeOpacity: 0.4 }}
     />
   );
 };
 
 const CustomEdgeThick: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targetY }) => {
+  let strokeColor;
+  if(id === '10-11'){
+    strokeColor = '#F59A31';
+  }
+  if(id === '11-12'){
+    strokeColor = '#EF3C1E';
+  }
+
   const [edgePath] = getBezierPath({
     sourceX: sourceX - 10,
     sourceY,
@@ -101,7 +113,7 @@ const CustomEdgeThick: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, t
     <BaseEdge
       id={id}
       path={edgePath}
-      style={{ stroke: '#949494', strokeWidth: 18, strokeLinecap: 'square', strokeOpacity: 0.4 }}
+      style={{ stroke: strokeColor, strokeWidth: 18, strokeLinecap: 'square', strokeOpacity: 0.4 }}
     />
   );
 };
@@ -111,7 +123,7 @@ const edgeTypes = { customEdge: CustomEdge, CustomEdgeThick: CustomEdgeThick };
 
 export default function CustomChart() {
   return (
-    <div className="custom-chart-wrapper" style={{ width: '100%', height: '500px' }}>
+    <div className="custom-chart-wrapper">
       <ReactFlow
         nodes={initialNodes}
         edges={initialEdges}
