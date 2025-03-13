@@ -3,20 +3,20 @@ import { BaseEdge, EdgeProps, getBezierPath, Handle, Position, ReactFlow } from 
 import '@xyflow/react/dist/style.css';
 
 const initialEdges = [
-  { id: '1-2', source: 'node-1', target: 'node-2', sourceHandle: 'a'},
-  { id: '1-3', source: 'node-1', target: 'node-3', sourceHandle: 'b'},
-  { id: '1-4', source: 'node-1', target: 'node-4', sourceHandle: 'c'},
-  { id: '1-5', source: 'node-1', target: 'node-5', sourceHandle: 'd'},
-  { id: '1-6', source: 'node-1', target: 'node-6', sourceHandle: 'e'},
-  { id: '1-7', source: 'node-1', target: 'node-7', sourceHandle: 'f'},
-  { id: '1-8', source: 'node-1', target: 'node-8', sourceHandle: 'g'},
-  { id: '1-9', source: 'node-1', target: 'node-9', sourceHandle: 'h'},
-  { id: '2-10', source: 'node-2', target: 'node-10', },
-  { id: '3-10', source: 'node-3', target: 'node-10', },
-  { id: '4-10', source: 'node-4', target: 'node-10', },
-  { id: '5-10', source: 'node-5', target: 'node-10', },
-  { id: '10-11', source: 'node-10', target: 'node-11', },
-  { id: '11-12', source: 'node-11', target: 'node-12', },
+  { id: '1-2', source: 'node-1', target: 'node-2', sourceHandle: 'a', type: 'customEdge'},
+  { id: '1-3', source: 'node-1', target: 'node-3', sourceHandle: 'b',type: 'customEdge'},
+  { id: '1-4', source: 'node-1', target: 'node-4', sourceHandle: 'c',type: 'customEdge'},
+  { id: '1-5', source: 'node-1', target: 'node-5', sourceHandle: 'd',type: 'customEdge'},
+  { id: '1-6', source: 'node-1', target: 'node-6', sourceHandle: 'e',type: 'customEdge'},
+  { id: '1-7', source: 'node-1', target: 'node-7', sourceHandle: 'f',type: 'customEdge'},
+  { id: '1-8', source: 'node-1', target: 'node-8', sourceHandle: 'g',type: 'customEdge'},
+  { id: '1-9', source: 'node-1', target: 'node-9', sourceHandle: 'h',type: 'customEdge'},
+  { id: '2-10', source: 'node-2', target: 'node-10', type: 'customEdge'},
+  { id: '3-10', source: 'node-3', target: 'node-10', type: 'customEdge'},
+  { id: '4-10', source: 'node-4', target: 'node-10', type: 'customEdge'},
+  { id: '5-10', source: 'node-5', target: 'node-10', type: 'customEdge'},
+  { id: '10-11', source: 'node-10', target: 'node-11', type: 'customEdge'},
+  { id: '11-12', source: 'node-11', target: 'node-12', type: 'customEdge'},
 ];
 
 const initialNodes = [
@@ -53,14 +53,14 @@ const CustomNode = ({ data }: { data: { label: string, count: number } }) => {
 const StartingNode = () => {
   return (
     <div className='starting-node-wrapper'>
-      <Handle type="source" position={Position.Right} id='a' style={{top: 20, background: 'transparent', border: 'none'}} />
-      <Handle type="source" position={Position.Right} id='b'style={{top: 40, background: 'transparent', border: 'none'}} />
-      <Handle type="source" position={Position.Right} id='c'style={{top: 60, background: 'transparent', border: 'none'}} />
-      <Handle type="source" position={Position.Right} id='d'style={{top: 80, background: 'transparent', border: 'none'}} />
-      <Handle type="source" position={Position.Right} id='e'style={{top: 100, background: 'transparent', border: 'none'}} />
-      <Handle type="source" position={Position.Right} id='f'style={{top: 120, background: 'transparent', border: 'none'}} />
-      <Handle type="source" position={Position.Right} id='g'style={{top: 140, background: 'transparent', border: 'none'}} />
-      <Handle type="source" position={Position.Right} id='h'style={{top: 160, background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='a' style={{top: '11%', background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='b'style={{top: '22%', background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='c'style={{top: '33%', background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='d'style={{top: '44%', background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='e'style={{top: '55%', background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='f'style={{top: '66%', background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='g'style={{top: '77%', background: 'transparent', border: 'none'}} />
+      <Handle type="source" position={Position.Right} id='h'style={{top: '88%', background: 'transparent', border: 'none'}} />
       <div className='starting-node'></div>
     </div>
   );
@@ -68,9 +68,9 @@ const StartingNode = () => {
 
 const CustomNEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targetY }) => {
   const [edgePath] = getBezierPath({
-    sourceX: sourceX + 10,
+    sourceX: sourceX + 5,
     sourceY,
-    targetX: targetX - 10,
+    targetX: targetX - 5,
     targetY,
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
@@ -81,13 +81,13 @@ const CustomNEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targe
     <BaseEdge
       id={id}
       path={edgePath}
-      style={{ stroke: '#000000', strokeWidth: 5, strokeLinecap: 'square', strokeOpacity: 0.9 }}
+      style={{ stroke: '#949494', strokeWidth: 10, strokeLinecap: 'square', strokeOpacity: 0.5 }}
     />
   );
 };
 
 const nodeTypes = { custom: CustomNode, startingNode: StartingNode };
-const edgeTypes = { 'custom-edge': CustomNEdge };
+const edgeTypes = { customEdge: CustomNEdge };
 
 export default function CustomChart() {
   return (
