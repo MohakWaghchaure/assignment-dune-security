@@ -234,7 +234,7 @@ $color9: #4F4F4A;
                 background-color: $color8;
                 padding: 0.8rem 0.25rem;
                 border-radius: 10px;
-                margin-right: 0.5rem;
+                margin-right: 0.25rem;
             }
             .custom-node {
                 display: flex;
@@ -244,13 +244,13 @@ $color9: #4F4F4A;
                 min-width: 14rem;
                 .count{
                     font-size: 1rem;
-                    font-weight: 700;
+                    font-weight: 800;
                     padding: 0rem 0.2rem;
                     color: $color3;
                 }
                 .label{
                     font-size: 1rem;
-                    font-weight: 400;
+                    font-weight: 500;
                     padding: 0rem 0.2rem;
                     color: $color3;
                 }

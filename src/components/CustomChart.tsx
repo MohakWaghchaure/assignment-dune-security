@@ -15,23 +15,23 @@ const initialEdges = [
   { id: '3-10', source: 'node-3', target: 'node-10', type: 'customEdge'},
   { id: '4-10', source: 'node-4', target: 'node-10', type: 'customEdge'},
   { id: '5-10', source: 'node-5', target: 'node-10', type: 'customEdge'},
-  { id: '10-11', source: 'node-10', target: 'node-11', type: 'customEdge'},
-  { id: '11-12', source: 'node-11', target: 'node-12', type: 'customEdge'},
+  { id: '10-11', source: 'node-10', target: 'node-11', type: 'CustomEdgeThick'},
+  { id: '11-12', source: 'node-11', target: 'node-12', type: 'CustomEdgeThick'},
 ];
 
 const initialNodes = [
-  { id: 'node-1', data: { backgroundColor: '#FFFFFF', label: '', count: 0 }, position: { x: -100, y: 50 }, type: 'startingNode', sourcePosition: Position.Right },
-  { id: 'node-2', data: { backgroundColor: '', label: 'CLICKED LINKS', count: 2735 }, position: { x: 150, y: 0 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-3', data: { backgroundColor: '', label: 'SCANNED QR CODES', count: 19 }, position: { x: 150, y: 50 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-4', data: { backgroundColor: '', label: 'HYBRID TESTS', count: 0 }, position: { x: 150, y: 100 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-5', data: { backgroundColor: '', label: 'SMS LINK CLICKED', count: 0 }, position: { x: 150, y: 150 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-6', data: { backgroundColor: '', label: 'DOWNLOADED ATTACHMENTS', count: 9 }, position: { x: 150, y: 200 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-7', data: { backgroundColor: '', label: 'RESPONDED TO PHISHING', count: 105 }, position: { x: 150, y: 250 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-8', data: { backgroundColor: '#FFFFFF', label: 'IGNORED PHISHING', count: 5577 }, position: { x: 150, y: 300 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-9', data: { backgroundColor: '#00FF81', label: 'REPORTED TO WATCHTOWER', count: 2021 }, position: { x: 150, y: 350 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-1', data: { backgroundColor: '#FFFFFF', label: '', count: 0 }, position: { x: 0, y: 70 }, type: 'startingNode', sourcePosition: Position.Right },
+  { id: 'node-2', data: { backgroundColor: '', label: 'CLICKED LINKS', count: 2735 }, position: { x: 200, y: 0 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-3', data: { backgroundColor: '', label: 'SCANNED QR CODES', count: 19 }, position: { x: 200, y: 50 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-4', data: { backgroundColor: '', label: 'HYBRID TESTS', count: 0 }, position: { x: 200, y: 100 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-5', data: { backgroundColor: '', label: 'SMS LINK CLICKED', count: 0 }, position: { x: 200, y: 150 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-6', data: { backgroundColor: '', label: 'DOWNLOADED ATTACHMENTS', count: 9 }, position: { x: 200, y: 230 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-7', data: { backgroundColor: '', label: 'RESPONDED TO PHISHING', count: 105 }, position: { x: 200, y: 280 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-8', data: { backgroundColor: '#FFFFFF', label: 'IGNORED PHISHING', count: 5577 }, position: { x: 200, y: 360 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-9', data: { backgroundColor: '#00FF81', label: 'REPORTED TO WATCHTOWER', count: 2021 }, position: { x: 200, y: 410 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
   { id: 'node-10', data: { backgroundColor: '#FEE442', label: 'ENTERED CREDENTIALS', count: 302 }, position: { x: 600, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-11', data: { backgroundColor: '#F59A31', label: 'SUBMITED CREDENTIALS', count: 44 }, position: { x: 1000, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-12', data: { backgroundColor: '#EF3C1E', label: 'ENTERED MFA', count: 26 }, position: { x: 1400, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-11', data: { backgroundColor: '#F59A31', label: 'SUBMITED CREDENTIALS', count: 44 }, position: { x: 950, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-12', data: { backgroundColor: '#EF3C1E', label: 'ENTERED MFA', count: 26 }, position: { x: 1300, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
 ];
 
 const CustomNode = ({ data }: { data: { label: string, count: number, backgroundColor: string } }) => {
@@ -68,9 +68,9 @@ const StartingNode = ({ data }: { data: { backgroundColor: string } }) => {
 
 const CustomEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targetY }) => {
   const [edgePath] = getBezierPath({
-    sourceX: sourceX + 5,
+    sourceX: sourceX + 8,
     sourceY,
-    targetX: targetX - 5,
+    targetX: targetX - 8,
     targetY,
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
@@ -81,16 +81,16 @@ const CustomEdge: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, target
     <BaseEdge
       id={id}
       path={edgePath}
-      style={{ stroke: '#949494', strokeWidth: 10, strokeLinecap: 'square', strokeOpacity: 0.5 }}
+      style={{ stroke: '#949494', strokeWidth: 12, strokeLinecap: 'square', strokeOpacity: 0.4 }}
     />
   );
 };
 
 const CustomEdgeThick: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, targetY }) => {
   const [edgePath] = getBezierPath({
-    sourceX: sourceX + 5,
+    sourceX: sourceX - 10,
     sourceY,
-    targetX: targetX - 5,
+    targetX: targetX - 10,
     targetY,
     sourcePosition: Position.Right,
     targetPosition: Position.Left,
@@ -98,29 +98,11 @@ const CustomEdgeThick: React.FC<EdgeProps> = ({ id, sourceX, sourceY, targetX, t
   });
 
   return (
-    <>
-      {/* Gradient Definition */}
-      <svg width="0" height="0">
-        <defs>
-          <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: '#ff7e5f', stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: '#feb47b', stopOpacity: 1 }} />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      {/* BaseEdge with gradient */}
-      <BaseEdge
-        id={id}
-        path={edgePath}
-        style={{
-          stroke: 'url(#gradient1)', // Apply the gradient
-          strokeWidth: 10,
-          strokeLinecap: 'square',
-          strokeOpacity: 0.5,
-        }}
-      />
-    </>
+    <BaseEdge
+      id={id}
+      path={edgePath}
+      style={{ stroke: '#949494', strokeWidth: 18, strokeLinecap: 'square', strokeOpacity: 0.4 }}
+    />
   );
 };
 
