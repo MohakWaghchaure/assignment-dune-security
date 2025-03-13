@@ -20,21 +20,21 @@ const initialEdges = [
 ];
 
 const initialNodes = [
-  { id: 'node-1', data: { backgroundColor: '#FFFFFF', label: '', count: 0 }, position: { x: 10, y: 70 }, type: 'startingNode', sourcePosition: Position.Right },
-  { id: 'node-2', data: { backgroundColor: '', label: 'CLICKED LINKS', count: 2735 }, position: { x: 200, y: 0 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-3', data: { backgroundColor: '', label: 'SCANNED QR CODES', count: 19 }, position: { x: 200, y: 50 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-4', data: { backgroundColor: '', label: 'HYBRID TESTS', count: 0 }, position: { x: 200, y: 100 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-5', data: { backgroundColor: '', label: 'SMS LINK CLICKED', count: 0 }, position: { x: 200, y: 150 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-6', data: { backgroundColor: '', label: 'DOWNLOADED ATTACHMENTS', count: 9 }, position: { x: 200, y: 230 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-7', data: { backgroundColor: '', label: 'RESPONDED TO PHISHING', count: 105 }, position: { x: 200, y: 280 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-8', data: { backgroundColor: '#FFFFFF', label: 'IGNORED PHISHING', count: 5577 }, position: { x: 200, y: 360 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-9', data: { backgroundColor: '#00FF81', label: 'REPORTED TO WATCHTOWER', count: 2021 }, position: { x: 200, y: 410 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-10', data: { backgroundColor: '#FEE442', label: 'ENTERED CREDENTIALS', count: 302 }, position: { x: 550, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-11', data: { backgroundColor: '#F59A31', label: 'SUBMITED CREDENTIALS', count: 44 }, position: { x: 870, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
-  { id: 'node-12', data: { backgroundColor: '#EF3C1E', label: 'ENTERED MFA', count: 26 }, position: { x: 1180, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-1', data: { backgroundColor: '#FFFFFF', label: '', count: '0' }, position: { x: 10, y: 70 }, type: 'startingNode', sourcePosition: Position.Right },
+  { id: 'node-2', data: { backgroundColor: '', label: 'CLICKED LINKS', count: '2,735' }, position: { x: 200, y: 0 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-3', data: { backgroundColor: '', label: 'SCANNED QR CODES', count: '19' }, position: { x: 200, y: 50 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-4', data: { backgroundColor: '', label: 'HYBRID TESTS', count: '0' }, position: { x: 200, y: 100 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-5', data: { backgroundColor: '', label: 'SMS LINK CLICKED', count: '0' }, position: { x: 200, y: 150 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-6', data: { backgroundColor: '', label: 'DOWNLOADED ATTACHMENTS', count: '9' }, position: { x: 200, y: 230 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-7', data: { backgroundColor: '', label: 'RESPONDED TO PHISHING', count: '105' }, position: { x: 200, y: 280 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-8', data: { backgroundColor: '#FFFFFF', label: 'IGNORED PHISHING', count: '5,577' }, position: { x: 200, y: 360 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-9', data: { backgroundColor: '#00FF81', label: 'REPORTED TO WATCHTOWER', count: '2,021' }, position: { x: 200, y: 410 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-10', data: { backgroundColor: '#FEE442', label: 'ENTERED CREDENTIALS', count: '302' }, position: { x: 550, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-11', data: { backgroundColor: '#F59A31', label: 'SUBMITED CREDENTIALS', count: '44' }, position: { x: 870, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
+  { id: 'node-12', data: { backgroundColor: '#EF3C1E', label: 'ENTERED MFA', count: '26' }, position: { x: 1180, y: 75 }, type: 'custom', sourcePosition: Position.Right, targetPosition: Position.Left },
 ];
 
-const CustomNode = ({ data }: { data: { label: string, count: number, backgroundColor: string } }) => {
+const CustomNode = ({ data }: { data: { label: string, count: string, backgroundColor: string } }) => {
   return (
     <div className='custom-node-wrapper'>
     <Handle type="target" position={Position.Left} id="i" style={{background: 'transparent', border: 'none'}}/>
