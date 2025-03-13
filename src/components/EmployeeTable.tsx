@@ -22,9 +22,6 @@ interface EmployeeData {
 
 const employeeData: EmployeeData[] = employeeDataRaw;
 
-console.log(employeeData);
-
-
 export default function EmployeeTable() {
 
   const [inputValue, setInputValue] = useState<string>('');
