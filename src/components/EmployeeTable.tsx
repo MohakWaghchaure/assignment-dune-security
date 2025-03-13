@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { AgGridReact } from 'ag-grid-react';
 import { ColDef } from "ag-grid-community";
 import searchIcon from '../images/icons/search-icon.png';
-import { EmployeeData, rowData } from "./employees";
+import employeeDataRaw from '../data/employeesData.json';
 import CustomPagination from './CustomPagination';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -12,6 +12,18 @@ const myTheme = themeQuartz.withParams({
   backgroundColor: '#1A1A19',
   headerTextColor: '#FFFFFF',
 });
+
+interface EmployeeData {
+  name: string;
+  riskScore: number;
+  riskLevel: string;
+  frequency: number;
+}
+
+const employeeData: EmployeeData[] = employeeDataRaw;
+
+console.log(employeeData);
+
 
 export default function EmployeeTable() {
 
@@ -125,7 +137,7 @@ export default function EmployeeTable() {
           <AgGridReact
             className="ag-theme-alpine full-width-grid"
             theme={myTheme}
-            rowData={rowData}
+            rowData={employeeData}
             columnDefs={columnDefs}
             domLayout="autoHeight"
             defaultColDef={{ resizable: true, flex: 1, }}
