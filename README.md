@@ -38,3 +38,18 @@ Future Scope
 Conclusion
 
 The technologies and libraries selected for the project prioritize efficiency, maintainability, and scalability. React, React Flow, and AG Grid provide a smooth user experience with lightweight functionality and efficient data handling. Core CSS and SCSS minimize bloat while offering flexibility and control over styling. Future enhancements like API integration, state management, and potential migration to Next.js will ensure the app scales efficiently. These choices create a strong foundation, ensuring optimal performance and scalability as the project evolves.
+
+
+
+Getting Started with Create React App
+This project was bootstrapped with Create React App.
+
+Available Scripts
+In the project directory, you can run:
+
+npm start
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in your browser.
+
+The page will reload when you make changes.
+You may also see any lint errors in the console.
